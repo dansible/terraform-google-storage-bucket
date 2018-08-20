@@ -8,7 +8,7 @@ variable "project" {
 }
 
 variable "location" {
-  description = "The GCS location."
+  description = "The GCS location. If it is not provided, the region configured in the gcloud client is used."
   default     = ""
 }
 

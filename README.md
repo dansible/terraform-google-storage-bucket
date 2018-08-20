@@ -8,7 +8,11 @@ This terraform module provisions a Google Cloud Storage bucket with ACLs. There 
 ```hcl
 module "my_bucket" {
   source             = "git@github.com:dansible/terraform-google-storage-bucket.git?ref=v1.1.0"
+
+  # Required Parameters:
   bucket_name        = "${var.bucket_name}"
+
+  # Optional Parameters:
   location           = "${var.region}"
   project            = "${var.project}"
   storage_class      = "REGIONAL"
