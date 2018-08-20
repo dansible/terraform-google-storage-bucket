@@ -39,7 +39,7 @@ resource "google_storage_bucket" "bucket" {
 
 # Bucket ACL
 resource "google_storage_bucket_acl" "bucket_acl" {
-  bucket      = "${var.bucket_name}"
+  bucket      = "${google_storage_bucket.bucket.name}"
   default_acl = "${var.default_acl}"
   role_entity = [
     "${var.role_entity}",
@@ -68,7 +68,7 @@ resource "google_storage_bucket" "logging" {
 # Log Bucket ACL
 resource "google_storage_bucket_acl" "log_bucket_acl" {
   count       = "${var.logging_enabled}"
-  bucket      = "${local.log_bucket_name}"
+  bucket      = "${google_storage_bucket.logging.name}"
   default_acl = "${var.default_acl}"
   role_entity = [
     "${var.role_entity}",
