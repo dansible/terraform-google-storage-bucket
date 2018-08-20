@@ -1,6 +1,11 @@
-output "name" {
+output "bucket_name" {
   value       = "${google_storage_bucket.bucket.name}"
   description = "The name of bucket."
+}
+
+output "log_bucket_name" {
+  value       = "${google_storage_bucket.bucket.name}"
+  description = "The name of the access log bucket."
 }
 
 output "self_link" {

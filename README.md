@@ -1,7 +1,7 @@
 # Google Storage Bucket
 
+This terraform module provisions a Google Cloud Storage bucket with an ACL. There is also the option of creating an additional bucket to store audit and access logs if you provide `logging_enabled = true` to the module parameters.
 
-This Terraform module provisions a Google Cloud Storage bucket with the option of creating an additional bucket to store audit and access logs.
 
 ## Usage Example
 
@@ -12,6 +12,7 @@ module "my_bucket" {
   location        = "${var.region}"
   project         = "${var.project}"
   storage_class   = "REGIONAL"
+  default_acl     = "projectPrivate"
   force_destroy   = "true"
   labels          = { "managed-by" = "terraform" }
   lifecycle_rules = [{
@@ -28,6 +29,11 @@ module "my_bucket" {
     }]
   }]
   logging_enabled    = true
+  role_entity = [
+    "OWNER:project-owners-${var.project}",
+    "WRITER:project-editors-${var.project}",
+    "READER:project-viewers-${var.project}"
+  ]
   versioning_enabled = true
 }
 ```
@@ -43,6 +49,7 @@ data "terraform_remote_state" "gcs_bucket" {
   }
 }
 ```
+
 
 ## Links
 

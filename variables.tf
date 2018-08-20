@@ -11,6 +11,7 @@ variable "location" {
   description = "The GCS location."
   default = ""
 }
+
 variable "storage_class" {
   description = "The Storage Class of the new bucket. Supported values are: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE."
   default     = "REGIONAL"
@@ -43,3 +44,14 @@ variable "logging_enabled" {
   default = false
 }
 
+# ACLs
+variable "default_acl" {
+  description = "Configure this ACL to be the default ACL. See https://cloud.google.com/storage/docs/access-control/lists for more details."
+  default     = "projectPrivate"
+}
+
+variable "role_entity" {
+  description = "List of role/entity pairs in the form ROLE:entity. See https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls for more details."
+  type        = "list"
+  default     = []
+}

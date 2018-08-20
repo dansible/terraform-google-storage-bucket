@@ -36,6 +36,17 @@ resource "google_storage_bucket" "bucket" {
   }
 }
 
+
+# Bucket ACL
+resource "google_storage_bucket_acl" "bucket_acl" {
+  bucket      = "${var.bucket_name}"
+  default_acl = "${var.default_acl}"
+  role_entity = [
+    "${var.role_entity}",
+  ]
+}
+
+
 # Logging for Storage Bucket
 resource "google_storage_bucket" "logging" {
   count         = "${var.logging_enabled}"
@@ -49,6 +60,17 @@ resource "google_storage_bucket" "logging" {
   lifecycle { prevent_destroy = false }
   lifecycle_rule {
     "action" { type = "Delete" }
-    "condition" { age = 90 }
+    "condition" { age = 60 }
   }
+}
+
+
+# Log Bucket ACL
+resource "google_storage_bucket_acl" "log_bucket_acl" {
+  count       = "${var.logging_enabled}"
+  bucket      = "${local.log_bucket_name}"
+  default_acl = "${var.default_acl}"
+  role_entity = [
+    "${var.role_entity}",
+  ]
 }
