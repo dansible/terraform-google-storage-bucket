@@ -1,15 +1,16 @@
-variable "project" {
-  description = "The ID of the google project to which the resource belongs. If it is not provided, the project configured in the gcloud client is used."
-}
-
-variable "location" {
-  description = "The GCS location."
-}
-
 variable "bucket_name" {
   description = "The name of the bucket"
 }
 
+variable "project" {
+  description = "The ID of the google project to which the resource belongs. If it is not provided, the project configured in the gcloud client is used."
+  default = ""
+}
+
+variable "location" {
+  description = "The GCS location."
+  default = ""
+}
 variable "storage_class" {
   description = "The Storage Class of the new bucket. Supported values are: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE."
   default     = "REGIONAL"
