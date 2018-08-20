@@ -4,12 +4,12 @@ variable "bucket_name" {
 
 variable "project" {
   description = "The ID of the google project to which the resource belongs. If it is not provided, the project configured in the gcloud client is used."
-  default = ""
+  default     = ""
 }
 
 variable "location" {
   description = "The GCS location."
-  default = ""
+  default     = ""
 }
 
 variable "storage_class" {
@@ -24,24 +24,27 @@ variable "force_destroy" {
 
 variable "labels" {
   description = "A set of key/value label pairs to assign to the bucket."
-  type    = "map"
-  default = { "managed-by" = "terraform" }
+  type        = "map"
+
+  default = {
+    "managed-by" = "terraform"
+  }
 }
 
 variable "versioning_enabled" {
   description = "While set to true, versioning is fully enabled for this bucket."
-  default = true
+  default     = true
 }
 
 variable "lifecycle_rules" {
   description = "The bucket's Lifecycle Rules configuration. See README for examples"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "logging_enabled" {
   description = "When set to true, enable the bucket's Access and Storage Logs configuration and create a storage_bucket for them."
-  default = false
+  default     = false
 }
 
 # ACLs
