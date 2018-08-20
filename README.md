@@ -1,7 +1,7 @@
 # Google Storage Bucket
 
 
-This terraform module provisions a Google Cloud Storage bucket with the option of creating an additional bucket to store audit and access logs.
+This Terraform module provisions a Google Cloud Storage bucket with the option of creating an additional bucket to store audit and access logs.
 
 ## Usage Example
 
