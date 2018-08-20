@@ -54,6 +54,7 @@ data "terraform_remote_state" "gcs_bucket" {
 ## Links
 
 - https://www.terraform.io/docs/providers/google/r/storage_bucket.html
+- https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html
 - https://github.com/nephosolutions/terraform-google-gcs-bucket.git
 - https://github.com/SweetOps/terraform-google-storage-bucket
 
