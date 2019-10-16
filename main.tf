@@ -56,11 +56,11 @@ resource "google_storage_bucket" "logging" {
   }
 
   lifecycle_rule {
-    "action" {
+    action {
       type = "Delete"
     }
 
-    "condition" {
+    condition {
       age = 60
     }
   }
